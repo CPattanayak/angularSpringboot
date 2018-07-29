@@ -1,0 +1,39 @@
+<div class="fixed-tool-bar ">
+    <mat-drawer-container class="example-container"  autosize>
+        
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <span>
+        <button class="toggle-button" (click)="drawer.toggle()">
+            <i class="material-icons toolbar-link-icon" style="color:white;">menu</i>
+        </button>
+    </span>
+      <span>Material App</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <mat-icon class="example-icon">delete</mat-icon>
+
+  </mat-toolbar>
+  <mat-drawer #drawer class="example-sidenav"  mode="side" >
+    <a [routerLink]="['/login']" [routerLinkActive]="['link-active']" mat-icon-button>
+      <mat-icon class="example-nav-icon" matTooltip="Login" matTooltipPosition="before">favorite</mat-icon>
+     </a>
+     <a [routerLink]="['/loginlist']" [routerLinkActive]="['link-active']" mat-icon-button>
+      <mat-icon class="example-nav-icon" matTooltip="Customer Details" matTooltipPosition="before">delete</mat-icon>
+    </a>
+    <a [routerLink]="['/order']" [routerLinkActive]="['link-active']" mat-icon-button>
+        <mat-icon class="example-nav-icon" matTooltip="Place Order" matTooltipPosition="before">delete</mat-icon>
+    </a>
+      <mat-icon class="example-nav-icon">favorite</mat-icon>
+      <mat-icon class="example-nav-icon">delete</mat-icon>
+      <mat-icon class="example-nav-icon">favorite</mat-icon>
+      <mat-icon class="example-nav-icon">delete</mat-icon>
+      <mat-icon class="example-nav-icon">favorite</mat-icon>
+      <mat-icon class="example-nav-icon">delete</mat-icon>
+      <mat-icon class="example-nav-icon">favorite</mat-icon>
+      <mat-icon class="example-nav-icon">delete</mat-icon>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container >
+      
+</div>
+

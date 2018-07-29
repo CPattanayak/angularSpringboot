@@ -1,0 +1,53 @@
+<div fxLayout='row' fxLayoutWrap fxLayoutAlign="center" fxShow fxHide.xs="true" fxHide.sm="true"
+     style="margin: 10px auto;">
+
+  <div fxFlex="40%">
+    <mat-card [style.minHeight]="'400px'">
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Login">
+
+            <app-log-on></app-log-on>
+          </mat-tab>
+          <mat-tab label="Register">
+            <app-new-login></app-new-login>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout='row' fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutWrap fxShow fxHide="true"
+     fxHide.xs="false" fxHide.sm="false" style="margin: 10px auto;">
+
+  <div fxFlex="60%" fxFlex.xs="100%">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Login
+          </mat-panel-title>
+          <mat-panel-description>
+
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-log-on></app-log-on>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Registration
+          </mat-panel-title>
+          <mat-panel-description>
+
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-new-login></app-new-login>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</div>

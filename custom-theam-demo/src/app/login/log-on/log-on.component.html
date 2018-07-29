@@ -1,0 +1,22 @@
+<form [formGroup]="signupForm" novalidate>
+  <div class="form-container">
+    <img src="https://www.planwallpaper.com/static/images/121.jpg">
+
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="UserName">
+      <mat-error *ngIf="!signupForm.get('username').valid ">
+        Invalid UserName
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Password">
+      <mat-error *ngIf="!signupForm.get('password').valid ">
+        Invalid Password
+      </mat-error>
+
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!signupForm.valid">Login</button>
+
+
+  </div>
+</form>
