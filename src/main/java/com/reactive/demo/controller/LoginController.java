@@ -4,6 +4,8 @@ import java.time.Duration;
 
 import javax.validation.Valid;
 
+import ch.qos.logback.classic.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +31,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping(value = "/api")
 public class LoginController {
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 	@Autowired
 	ReactiveLoginUserRepository loginRepository;
 	@Autowired
@@ -48,7 +51,7 @@ public class LoginController {
     }
 	@PostMapping("/user/create")
 	public Mono<LoginUser> createCustomer(@Valid @RequestBody LoginUser user) {
-		System.out.println("Create Customer: " + user.getUsername() + "...");
+		LOGGER.info("Create Customer: " + user.getUsername() + "...");
 
 		
 		return loginRepository.save(user);
@@ -57,7 +60,7 @@ public class LoginController {
 	@PutMapping("/user/{id}")
 	public Mono<ResponseEntity<LoginUser>> updateCustomer(@PathVariable("id") String id,
 			@RequestBody LoginUser user) {
-		System.out.println("Update Customer with ID = " + id + "...");
+		LOGGER.info("Update Customer with ID = " + id + "...");
 
 		return loginRepository.findById(id).flatMap(userData -> {
 			userData.setAddress(user.getAddress());
@@ -73,7 +76,7 @@ public class LoginController {
 
 	@DeleteMapping("/user/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable("id") String id) {
-		System.out.println("Delete Customer with ID = " + id + "...");
+		LOGGER.info("Delete Customer with ID = " + id + "...");
 
 		try {
 			loginRepository.deleteById(id).subscribe();
@@ -86,7 +89,7 @@ public class LoginController {
 
 	@DeleteMapping("/user/delete")
 	public ResponseEntity<String> deleteAllCustomers() {
-		System.out.println("Delete All Customers...");
+		LOGGER.info("Delete All Customers...");
 
 		try {
 			loginRepository.deleteAll().subscribe();
